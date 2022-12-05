@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Future Sale prediction</title>
+</head>
+<body>
+
+<div id="demo">
+  <h2>Future Sale prediction</h2>
+  <label>ItemId: </label>&nbsp;&nbsp;&nbsp;<input id="item_id" type="text" placeholder="ItemId..."/>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+<br />
+<br />
+<div id="result">
+
+</div>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
+  item_id = document.getElementById('item_id').value
+  xhttp.open("GET", "predict?item_id=" + item_id, true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
